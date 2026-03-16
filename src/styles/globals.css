@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom font or special effects? Drop here! */
+
+html,
+body {
+padding: 0;
+margin: 0;
+background: #000;
+color: #aaff99;
+font-family: 'Fira Mono', 'Menlo', 'Monaco', 'Consolas', monospace;
+}
+
+/* Neon button style */
+.btn {
+@apply px-6 py-3 rounded-full font-bold tracking-widest uppercase bg-lime-400 text-black shadow-lg transition-all hover:bg-lime-500 hover:scale-105 hover:shadow-2xl;
+border: 2px solid #0f0;
+box-shadow: 0 0 10px #0f0, 0 0 50px #0f0a, 0 0 100px #0f0b;
+filter: drop-shadow(0 0 6px #00ff88);
+cursor: pointer;
+}
+
+/* Animate that ∞ on the front page */
+.animate-pulse {
+animation: pulse 1.2s infinite alternate cubic-bezier(0.4,0,0.6,1);
+}
+
+@keyframes pulse {
+0% { opacity: .7; text-shadow: 0 0 10px #0f0; }
+100% { opacity: 1; text-shadow: 0 0 30px #aaff99; }
+}
