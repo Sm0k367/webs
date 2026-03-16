@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const randomAdjectives = [
 "Savage", "Neon", "Unknown", "Dream", "Quantum", "Noisy", "Shadow", "Laser", "Echo", "Hype"
@@ -23,8 +23,13 @@ return avatars[Math.floor(Math.random() * avatars.length)];
 }
 
 export default function QuickLogin({ onLogin }) {
-const [username, setUsername] = useState(randomName());
-const [avatar, setAvatar] = useState(randomAvatar());
+const [username, setUsername] = useState("");
+const [avatar, setAvatar] = useState("");
+
+useEffect(() => {
+setUsername(randomName());
+setAvatar(randomAvatar());
+}, []);
 
 function handleLogin(e) {
 e.preventDefault();
