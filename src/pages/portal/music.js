@@ -2,6 +2,7 @@ import Link from 'next/link';
 import LiveJamWall from '../../components/LiveJamWall';
 import PortalChat from '../../components/PortalChat';
 import MusicUploader from '../../components/MusicUploader';
+import OpenMicQueue from '../../components/OpenMicQueue';
 import { useState } from 'react';
 
 export default function MusicPortal({ user }) {
@@ -21,6 +22,7 @@ return (
 {track && (
 <audio controls src={track.url} className="w-full my-2" />
 )}
+<OpenMicQueue portalId="music" user={user} />
 <LiveJamWall portalId="music" user={user} />
 <PortalChat portalId="music" user={user} />
 </div>
