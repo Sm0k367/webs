@@ -29,11 +29,17 @@ const [avatar, setAvatar] = useState("");
 useEffect(() => {
 setUsername(randomName());
 setAvatar(randomAvatar());
+// eslint-disable-next-line
 }, []);
 
 function handleLogin(e) {
 e.preventDefault();
-if (onLogin) onLogin({ name: username, avatar, id: username.toLowerCase().replace(/[^a-z0-9]/g, '') });
+if (onLogin)
+onLogin({
+name: username,
+avatar,
+id: username.toLowerCase().replace(/[^a-z0-9]/g, ""),
+});
 }
 
 return (
@@ -46,7 +52,7 @@ className="max-w-xs mx-auto bg-gray-900 border-2 border-lime-400 rounded-xl p-6 
 <input
 className="mb-2 text-center px-2 py-1 rounded border border-lime-400 bg-gray-800 text-lime-200"
 value={username}
-onChange={e => setUsername(e.target.value)}
+onChange={(e) => setUsername(e.target.value)}
 autoFocus
 maxLength={18}
 />
@@ -57,13 +63,17 @@ maxLength={18}
 type="button"
 key={a}
 onClick={() => setAvatar(a)}
-className={`text-2xl px-2 py-1 rounded ${avatar === a ? "bg-lime-500" : "bg-gray-800"}`}
+className={`text-2xl px-2 py-1 rounded ${
+avatar === a ? "bg-lime-500" : "bg-gray-800"
+}`}
 >
 {a}
 </button>
 ))}
 </div>
-<button className="btn w-full" type="submit">Enter Nexus</button>
+<button className="btn w-full" type="submit">
+Enter Nexus
+</button>
 </form>
 );
 }
