@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import PresenceBar from '../../components/PresenceBar';
 import { usePortalSocket } from '../../hooks/usePortalSocket';
+import AIHostChat from '../../components/AIHostChat';
 
 export default function AIHosts({ user }) {
 const { users } = usePortalSocket("ai", user);
@@ -27,6 +28,7 @@ Step into the world of live AI hosts: narrators, remixers, meta-trolls, and unpr
 <li className="italic">Your name here?</li>
 </ul>
 </div>
+<AIHostChat user={user} />
 </div>
 </div>
 );
