@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import LiveJamWall from '../../components/LiveJamWall';
+import PortalChat from '../../components/PortalChat';
 
 // TEMP: Hardcoded user for demo. Replace with real auth/session logic!
 const demoUser = { name: "DemoUser", id: "demo1" };
@@ -16,6 +17,7 @@ return (
 </div>
 <div className="mt-12 w-full max-w-xl">
 <LiveJamWall portalId="music" user={demoUser} />
+<PortalChat portalId="music" user={demoUser} />
 </div>
 </div>
 );
