@@ -5,6 +5,21 @@ export default function OpenMicQueue({ portalId, user }) {
 const { sendAction, action } = usePortalSocket(portalId, user);
 const [input, setInput] = useState("");
 const [queue, setQueue] = useState([]);
+const [judges, setJudges] = useState({});
+
+async function judge(entry, idx) {
+// Call your API to judge: /api/ai with a special Open Mic system prompt
+const res = await fetch("/api/ai", {
+method: "POST",
+headers: { "Content-Type": "application/json" },
+body: JSON.stringify({
+prompt: `You are an AI Open Mic judge. Rate or riff on this performance: ${entry.text}`,
+host: "SmokeStream" // or let users choose
+}),
+});
+const data = await res.json();
+setJudges((prev) => ({ ...prev, [idx]: data.reply || "AI glitched out." }));
+}
 
 function submit() {
 if (!input.trim()) return;
@@ -12,11 +27,20 @@ const entry = { user: user.name, text: input };
 sendAction({ type: "mic-submit", entry });
 setInput("");
 setQueue((q) => [...q, entry]);
+// Trigger AI judging by default
+judge(entry, queue.length);
 }
 
 // Listen for new submissions from the portal
-if (action && action.type === "mic-submit" && !queue.some(e => e.text === action.entry.text && e.user === action.entry.user)) {
-setQueue((q) => [...q, action.entry]);
+if (
+action &&
+action.type === "mic-submit" &&
+!queue.some(e => e.text === action.entry.text && e.user === action.entry.user)
+) {
+setQueue((q) => {
+judge(action.entry, q.length);
+return [...q, action.entry];
+});
 }
 
 return (
@@ -37,6 +61,9 @@ onKeyDown={e => e.key === "Enter" && submit()}
 {queue.map((q, i) => (
 <li key={i}>
 <span className="font-bold">{q.user}:</span> <span className="italic">{q.text}</span>
+<div className="text-lime-200 text-sm mt-1 pl-3 border-l-2 border-lime-300">
+{judges[i] ? <span>🎤 <b>AI Judge:</b> {judges[i]}</span> : <span className="italic text-lime-500">Judging…</span>}
+</div>
 </li>
 ))}
 </ol>
