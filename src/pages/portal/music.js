@@ -1,8 +1,12 @@
 import Link from 'next/link';
 import LiveJamWall from '../../components/LiveJamWall';
 import PortalChat from '../../components/PortalChat';
+import MusicUploader from '../../components/MusicUploader';
+import { useState } from 'react';
 
 export default function MusicPortal({ user }) {
+const [track, setTrack] = useState(null);
+
 return (
 <div className="min-h-screen bg-gradient-to-br from-black via-indigo-950 to-cyan-900 flex flex-col items-center justify-center">
 <h2 className="text-4xl font-bold mb-4 text-cyan-200 drop-shadow-lg">🎶 Music Portal</h2>
@@ -13,6 +17,10 @@ return (
 <Link href="/portal/games" className="btn">Game Zone</Link>
 </div>
 <div className="mt-12 w-full max-w-xl">
+<MusicUploader onUpload={setTrack} />
+{track && (
+<audio controls src={track.url} className="w-full my-2" />
+)}
 <LiveJamWall portalId="music" user={user} />
 <PortalChat portalId="music" user={user} />
 </div>
