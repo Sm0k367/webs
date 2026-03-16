@@ -2,11 +2,8 @@ import Link from 'next/link';
 import PresenceBar from '../../components/PresenceBar';
 import { usePortalSocket } from '../../hooks/usePortalSocket';
 
-// TEMP: Hardcoded user for demo
-const demoUser = { name: "DemoUser", id: "demo1" };
-
-export default function GameZone() {
-const { users } = usePortalSocket("games", demoUser);
+export default function GameZone({ user }) {
+const { users } = usePortalSocket("games", user);
 
 return (
 <div className="min-h-screen bg-gradient-to-tr from-black via-yellow-900 to-yellow-400 flex flex-col items-center justify-center">
