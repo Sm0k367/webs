@@ -1,0 +1,43 @@
+generator client {
+provider = "prisma-client-js"
+}
+
+datasource db {
+provider = "sqlite"
+url = env("DATABASE_URL")
+}
+
+model User {
+id String @id @default(cuid())
+name String
+avatarUrl String?
+createdAt DateTime @default(now())
+sessions Session[]
+jams Jam[]
+}
+
+model Session {
+id String @id @default(cuid())
+user User? @relation(fields: [userId], references: [id])
+userId String?
+createdAt DateTime @default(now())
+type String // 'music' | 'art' | 'game' | 'ai'
+state Json
+}
+
+model Jam {
+id String @id @default(cuid())
+type String // 'music' | 'art'
+startedBy User? @relation(fields: [userId], references: [id])
+userId String?
+createdAt DateTime @default(now())
+data Json // Room for anything: tracks, art, collab state
+}
+
+model AIHost {
+id String @id @default(cuid())
+name String
+persona String // Description/vibe of the AI host
+online Boolean @default(false)
+lastSeen DateTime?
+}
