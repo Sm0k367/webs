@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import PresenceBar from '../../components/PresenceBar';
 import { usePortalSocket } from '../../hooks/usePortalSocket';
+import MicroTrivia from '../../components/MicroTrivia';
 
 export default function GameZone({ user }) {
 const { users } = usePortalSocket("games", user);
@@ -16,6 +17,7 @@ return (
 </div>
 <div className="mt-12 w-full max-w-xl">
 <PresenceBar users={users} color="yellow" />
+<MicroTrivia portalId="games" user={user} />
 <div className="p-6 bg-black bg-opacity-60 backdrop-blur rounded-lg border-2 border-yellow-400 shadow-xl">
 <h3 className="text-2xl text-yellow-300 mb-2 font-mono">Arcade Lobby 🕹️</h3>
 <p className="text-yellow-200 italic">Games are spawning soon. Submit your own or challenge the AI!</p>
