@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import ArtCanvasWall from '../../components/ArtCanvasWall';
+import CollaborativeDraw from '../../components/CollaborativeDraw';
 
 export default function ArtWall({ user }) {
 return (
@@ -14,7 +14,7 @@ Remix the world. Draw, drop images, or generate AI art. Every mark leaves an ech
 <Link href="/portal/ai" className="btn">AI Hosts</Link>
 </div>
 <div className="mt-12 w-full max-w-xl">
-<ArtCanvasWall portalId="art" user={user} />
+<CollaborativeDraw portalId="art" user={user} />
 </div>
 </div>
 );
