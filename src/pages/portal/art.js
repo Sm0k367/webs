@@ -1,10 +1,7 @@
 import Link from 'next/link';
 import ArtCanvasWall from '../../components/ArtCanvasWall';
 
-// TEMP: Hardcoded user for demo. Swap in real user/session later!
-const demoUser = { name: "DemoUser", id: "demo1" };
-
-export default function ArtWall() {
+export default function ArtWall({ user }) {
 return (
 <div className="min-h-screen bg-gradient-to-tr from-black via-green-900 to-green-400 flex flex-col items-center justify-center">
 <h2 className="text-4xl font-bold mb-4 text-green-200 drop-shadow-lg">🎨 Art Wall</h2>
@@ -17,7 +14,7 @@ Remix the world. Draw, drop images, or generate AI art. Every mark leaves an ech
 <Link href="/portal/ai" className="btn">AI Hosts</Link>
 </div>
 <div className="mt-12 w-full max-w-xl">
-<ArtCanvasWall portalId="art" user={demoUser} />
+<ArtCanvasWall portalId="art" user={user} />
 </div>
 </div>
 );
