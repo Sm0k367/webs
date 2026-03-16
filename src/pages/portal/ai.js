@@ -2,11 +2,8 @@ import Link from 'next/link';
 import PresenceBar from '../../components/PresenceBar';
 import { usePortalSocket } from '../../hooks/usePortalSocket';
 
-// TEMP: Hardcoded user for demo
-const demoUser = { name: "DemoUser", id: "demo1" };
-
-export default function AIHosts() {
-const { users } = usePortalSocket("ai", demoUser);
+export default function AIHosts({ user }) {
+const { users } = usePortalSocket("ai", user);
 
 return (
 <div className="min-h-screen bg-gradient-to-tl from-black via-fuchsia-950 to-pink-600 flex flex-col items-center justify-center">
