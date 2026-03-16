@@ -30,18 +30,26 @@ root/
 ├─ next.config.js
 ├─ tsconfig.json
 └─ README.md
+
 ✨ HOW TO RUN THIS THING
 shCopyCopied!
 cp .env.example .env # Add your creds
 npm install # Or use yarn
 npx prisma migrate dev # Boom: DB up
 npm run dev # Welcome to the Nexus
+
 🦾 Key Features
+
 🚪 Portal-jump between worlds—carry your avatar, mood, and music
+
 🤖 Live AI hosts—improv, remix, troll, support, narrate, or mutate
+
 🎛️ Real-time collab walls (audio + visual graffiti)
+
 🔂 Drop-in/off mini-games and jam sessions (meta-AI remixable)
+
 🥚 Secret ARGs & Easter Eggs for the bold
+
 👩‍💻 Contributing
 Everyone’s a builder. Fork, PR, throw chaos at it.
 image
