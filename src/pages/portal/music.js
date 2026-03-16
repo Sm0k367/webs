@@ -1,4 +1,8 @@
 import Link from 'next/link';
+import LiveJamWall from '../../components/LiveJamWall';
+
+// TEMP: Hardcoded user for demo. Replace with real auth/session logic!
+const demoUser = { name: "DemoUser", id: "demo1" };
 
 export default function MusicPortal() {
 return (
@@ -10,10 +14,8 @@ return (
 <Link href="/portal/ai" className="btn">Meet the AI Host</Link>
 <Link href="/portal/games" className="btn">Game Zone</Link>
 </div>
-{/* TODO: Add audio input/mixer, live visualizer, music room list, and interactive collab features */}
-<div className="mt-12 p-6 bg-black bg-opacity-60 backdrop-blur rounded-lg border-2 border-cyan-400 shadow-xl">
-<h3 className="text-2xl text-cyan-300 mb-2 font-mono">Live Jam Wall 🌐</h3>
-<p className="text-cyan-200 italic">No sessions yet. Be the first to start a jam, or import a track!</p>
+<div className="mt-12 w-full max-w-xl">
+<LiveJamWall portalId="music" user={demoUser} />
 </div>
 </div>
 );
