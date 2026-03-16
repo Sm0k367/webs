@@ -1,4 +1,8 @@
 import Link from 'next/link';
+import ArtCanvasWall from '../../components/ArtCanvasWall';
+
+// TEMP: Hardcoded user for demo. Swap in real user/session later!
+const demoUser = { name: "DemoUser", id: "demo1" };
 
 export default function ArtWall() {
 return (
@@ -12,10 +16,8 @@ Remix the world. Draw, drop images, or generate AI art. Every mark leaves an ech
 <Link href="/portal/games" className="btn">Game Zone</Link>
 <Link href="/portal/ai" className="btn">AI Hosts</Link>
 </div>
-{/* TODO: Drop in a live drawing canvas, image drop, and AI art generator */}
-<div className="mt-12 p-6 bg-black bg-opacity-60 backdrop-blur rounded-lg border-2 border-green-400 shadow-xl">
-<h3 className="text-2xl text-green-300 mb-2 font-mono">Collaborative Canvas 🖌️</h3>
-<p className="text-green-200 italic">Nothing on the canvas—yet. Make the first move.</p>
+<div className="mt-12 w-full max-w-xl">
+<ArtCanvasWall portalId="art" user={demoUser} />
 </div>
 </div>
 );
